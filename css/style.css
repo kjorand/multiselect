@@ -1,32 +1,11 @@
 @charset "UTF-8";
-/* CSS Document * Varun Dewan 2019 */
-
-html, body {
-  padding: 0px;
-  margin: 0px;
-  background: #222;
-  font-family: 'Raleway', sans-serif;
-  color: #444;
-}
-
-body * {
-  box-sizing: border-box;
-  margin: 0px;
-  padding: 0px;
-  color: #222;
-}
-body section {
-  margin-bottom: 10px;
-}
-
-.container {
-  max-width: 600px;
-  margin: 40px auto;
-  background: #cdcdcd;
-  min-height: 330px;
-  height: 400px;
-  padding: 20px 20px;
-}
+/**
+ * Varun Dewan 2019
+ *
+ * https://www.cssscript.com/multiple-select-dropdown/
+ * Licence MIT
+ * https://github.com/varundewan/multiselect
+ */
 
 .drop {
   position: relative;
@@ -64,13 +43,6 @@ body section {
   display: none;
   z-index: 1;
 }
-
-.link {
-  text-align: center;
-  margin: 20px 0px;
-  color:#8CACD7;
-}
-
 
 .drop .drop-display {
   position: relative;

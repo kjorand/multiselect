@@ -1,4 +1,11 @@
-//Varun Dewan 2019
+/**
+ * Varun Dewan 2019
+ *
+ * https://www.cssscript.com/multiple-select-dropdown/
+ * Licence MIT
+ * https://github.com/varundewan/multiselect
+ */
+
 var $ = {
    get: function(selector){ 
       var ele = document.querySelectorAll(selector);
@@ -29,6 +36,8 @@ var drop = function(info){var o = {
       options: $.get(info.selector + ' option'),
       parent: undefined,
    },
+   addHook: info.addHook ? info.addHook : function(selectID, value){},
+   removeHook: info.removeHook ? info.removeHook : function(selectID, value){},
    init: function(){
       //Setup Drop HTML
       this.html.parent = $.get(info.selector)[0].parentNode
@@ -65,6 +74,10 @@ var drop = function(info){var o = {
          removed: false
       })
       this.options[index].state = 'remove';
+      // Updating HTML element
+      this.html.select.options[index].selected = true;
+      // Calling hook
+      this.addHook(this.html.select.id, this.options[index].value);
       this.render()
    },
    removeOption: function(e, element){
@@ -78,6 +91,10 @@ var drop = function(info){var o = {
          }
       })
       this.options[index].state = 'add'
+      // Updating HTML element
+      this.html.select.options[index].selected = false;
+      // Calling hook
+      this.removeHook(this.html.select.id, this.options[index].value);
       this.render();
    },
    load: function(){
@@ -89,6 +106,10 @@ var drop = function(info){var o = {
             value: option.value,
             selected: option.selected,
             state: ''
+         }
+         // Take HTML preselected into account
+         if(option.selected){
+            this.preselected.push(i);
          }
       }
    },
@@ -162,19 +183,3 @@ var drop = function(info){var o = {
       return check
    }
 }; o.init(); return o;}
-
-
-//Set up some data
-var options = [
-   { html: 'cats', value: 'cats' },
-   { html: 'fish', value: 'fish' },
-   { html: 'squids', value: 'squids' },
-   { html: 'cats', value: 'whales' },
-   { html: 'cats', value: 'bikes' },
-];
-
-var myDrop = new drop({
-   selector:  '#myMulti',
-   preselected: [0, 2]
-});
- myDrop.toggle();

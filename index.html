@@ -12,7 +12,43 @@
 
 <link rel="stylesheet" href="css/style.css">
 
-  
+<script src="js/script.js"></script>
+
+<style>
+  html, body {
+    padding: 0px;
+    margin: 0px;
+    background: #222;
+    font-family: 'Raleway', sans-serif;
+    color: #444;
+  }
+
+  body * {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    color: #222;
+  }
+  body section {
+    margin-bottom: 10px;
+  }
+
+  .container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #cdcdcd;
+    min-height: 330px;
+    height: 400px;
+    padding: 20px 20px;
+  }
+
+  .link {
+    text-align: center;
+    margin: 20px 0px;
+    color:#8CACD7;
+  }
+
+</style>
 </head>
 
 <body>
@@ -29,8 +65,8 @@
   <section>
     <p>Preselected</p>
     <select multiple="multiple" id="myMulti">
-      <option>Item 1</option>
-      <option>item 2</option>
+      <option value="12">Item 1</option>
+      <option selected>item 2</option>
       <option>item 3</option>
       <option>item 4</option>
       
@@ -38,13 +74,22 @@
   </section>
 </div>
 
+<script type="text/javascript">
+  //Set up some data
+  var options = [
+    { html: 'cats', value: 'cats' },
+    { html: 'fish', value: 'fish' },
+    { html: 'squids', value: 'squids' },
+    { html: 'cats', value: 'whales' },
+    { html: 'cats', value: 'bikes' },
+  ];
 
-  
-  
-<script  src="js/index.js"></script>
-
-
-
+  var myDrop = new drop({
+    selector: '#myMulti',
+    removeHook: (selID, val)=>{alert(`${val} - ${selID}`);}
+  });
+  myDrop.toggle();
+</script>
 
 </body>
 
